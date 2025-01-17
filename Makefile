@@ -35,7 +35,7 @@ GO_PKG_LDFLAGS_X:=\
 	$(GO_PKG)/lib/build.Tags=$(GO_PKG_TAGS)
 
 include $(INCLUDE_DIR)/package.mk
-include ../../lang/golang/golang-package.mk
+include $(TOPDIR)/feeds/packages/lang/golang/golang-package.mk
 
 define Package/syncthing/Default
   URL:=https://syncthing.net
