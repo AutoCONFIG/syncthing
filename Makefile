@@ -6,9 +6,9 @@ PKG_RELEASE:=1
 
 PKG_SOURCE:=syncthing-linux-arm64-v$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=https://github.com/syncthing/syncthing/releases/download/v$(PKG_VERSION)
-PKG_HASH:=272c0be3fa487a0ef9152396c13dbeb55cd8ff94a3c05578979c4406918e59a4
+PKG_HASH:=6cf4b15f3064aa3aa3dbaa72fffaa3d3ef0b7b98ad5a3a7c14ebdb013136a0d2
 
-PKG_BUILD_DIR=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)
+PKG_BUILD_DIR=$(BUILD_DIR)/syncthing-linux-arm64-v$(PKG_VERSION)/
 
 PKG_MAINTAINER:=Yun Wang <maoerpet@foxmail.com>
 PKG_LICENSE:=MPL-2.0
@@ -38,6 +38,9 @@ define Package/syncthing/description
   third party and how it's transmitted over the Internet.
 endef
 
+define Build/Compile
+endef
+
 define Package/syncthing/install
 	$(INSTALL_DIR) $(1)/etc/syncthing
 	$(INSTALL_DIR) $(1)/etc/config/
@@ -45,7 +48,7 @@ define Package/syncthing/install
 	$(INSTALL_DIR) $(1)/etc/init.d/
 	$(INSTALL_BIN) $(CURDIR)/files/syncthing.init $(1)/etc/init.d/syncthing
 	$(INSTALL_DIR) $(1)/usr/bin/
-	$(CP) $(PKG_BUILD_DIR)/syncthing $(1)/usr/bin/
+	$(INSTALL_BIN) $(PKG_BUILD_DIR)/syncthing $(1)/usr/bin/
 
 	$(INSTALL_DIR) $(1)/etc/sysctl.d/
 	$(INSTALL_BIN) $(CURDIR)/files/syncthing-sysctl.conf $(1)/etc/sysctl.d/90-syncthing-inotify.conf
