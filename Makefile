@@ -19,7 +19,6 @@ include $(INCLUDE_DIR)/package.mk
 
 define Package/syncthing
   URL:=https://syncthing.net
-  DEPENDS:=
   SECTION:=utils
   CATEGORY:=Utilities
   TITLE:=Continuous file synchronization program
